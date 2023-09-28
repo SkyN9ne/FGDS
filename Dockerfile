@@ -1,5 +1,5 @@
-FROM kalilinux/kali-rolling
-RUN apt update -y && apt -y install curl
-COPY . . 
-RUN chmod 755 ./FGDS.sh
-ENTRYPOINT ["./FGDS.sh"]
+FROM bash:5.1-alpine3.17
+
+RUN apk add --no-cache curl
+ADD --chmod=0755 FGDS.sh ./FGDS.sh
+ENTRYPOINT ["bash", "./FGDS.sh"]
